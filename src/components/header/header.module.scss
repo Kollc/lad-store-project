@@ -1,0 +1,77 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  padding: 15px 50px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1320px;
+}
+
+.logo {
+  span {
+    color: #724cf9;
+  }
+
+  width: 12vw;
+  font-size: 27px;
+}
+
+.menu {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    li {
+      margin: 0 20px;
+
+      a {
+        color: #724cf9;
+        font-size: 20px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.userMenu {
+  width: 12vw;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    svg {
+      padding-top: 2px;
+    }
+
+    li {
+      margin: 0 20px;
+
+      a {
+        color: #724cf9;
+        font-size: 20px;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .basket {
+    position: relative;
+
+    .counter {
+      position: absolute;
+      right: -5px;
+      top: -8px;
+      font-size: 15px;
+      color: red;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    }
+  }
+}

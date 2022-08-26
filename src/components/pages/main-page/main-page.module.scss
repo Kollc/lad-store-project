@@ -1,0 +1,56 @@
+.main {
+  background-color: rgba(0, 0, 0, 0.7);
+  background-position: 50%;
+  background-size: cover;
+  background-attachment: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("./imagen/background-main.jpg");
+
+  .content {
+    color: #fff;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 30vh 0;
+  }
+
+  .market {
+    font-size: 32px;
+    margin: 8px 0;
+  }
+
+  .feature {
+    font-weight: 100;
+    font-size: 50px;
+    margin: 15px 0;
+
+    span {
+        color: #724cf9;
+    }
+  }
+
+  a {
+    display: block;
+    box-sizing: border-box;
+    font-size: 17px;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #724cf9;
+    width: 120px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: 50px;
+    span {
+      color: #724cf9;
+    }
+  }
+}
