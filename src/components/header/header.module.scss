@@ -1,8 +1,9 @@
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
   height: 70px;
-  padding: 15px 50px;
+  padding: 15px 15px;
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
@@ -10,11 +11,19 @@
 }
 
 .logo {
+  justify-self: start;
   span {
     color: #724cf9;
   }
 
-  width: 12vw;
+  a {
+    text-decoration: none;
+  }
+
+  a:active {
+    color: #000;
+  }
+
   font-size: 27px;
 }
 
@@ -38,7 +47,9 @@
 }
 
 .userMenu {
-  width: 12vw;
+  display: grid;
+  justify-content: end;
+  justify-self: end;
 
   ul {
     list-style: none;

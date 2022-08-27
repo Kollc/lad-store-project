@@ -7,15 +7,15 @@ function Header(): JSX.Element {
     <div className="container">
       <section className={style.header}>
         <div className={style.logo}>
-          <span>Lad</span>Store
+          <Link to='/'><span>Lad</span>Store</Link>
         </div>
         <nav className={style.menu}>
           <ul>
             <li>
-              <a>Main</a>
+              <Link to='/'>Main</Link>
             </li>
             <li>
-              <a>Shop</a>
+              <Link to='/shop'>Shop</Link>
             </li>
             <li>
               <a>About</a>
