@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MainLayout from "../../main-layout/main-layout";
 import style from "./main-page.module.scss";
 
@@ -12,7 +13,7 @@ function MainPage(): JSX.Element {
             </h1>
             <p className={style.market}>LadStore Online Ordering</p>
             <p className={style.feature}>Your <span>best</span> purchases quickly <span>and</span> efficiently</p>
-            <a>Order Now</a>
+            <Link to='/shop'>Order Now</Link>
           </div>
         </section>
       </MainLayout>

@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import MainLayout from "../../main-layout/main-layout";
+import PageTitle from "../../page-title/page-title";
 import style from "./sign-in-page.module.scss";
 
 function SignInPage(): JSX.Element {
@@ -13,7 +14,7 @@ function SignInPage(): JSX.Element {
   return (
     <MainLayout>
       <section className={`${style.signIn} container`}>
-        <h1>Sign In</h1>
+        <PageTitle title='Sign In'/>
         <form onSubmit={submitFormHandle}>
           <input
             type="text"

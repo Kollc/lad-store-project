@@ -44,7 +44,7 @@ function Header(): JSX.Element {
               <span className={style.counter}>0</span>
             </li>
             <li>
-              <Link to="/sign-in">Log in</Link>
+              <Link to="/sign-up">Sing Up</Link>
             </li>
           </ul>
         </div>

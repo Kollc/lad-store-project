@@ -1,0 +1,32 @@
+.cartCounter {
+  justify-self: end;
+  align-self: center;
+  b {
+    font-size: 20px;
+    margin: 0 15px;
+    color: #724cf9;
+  }
+
+  button {
+    border: 1px solid #724cf9;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #724cf9;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+}
+
+.shopItemFooter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-self: center;
+  margin-top: auto;
+
+  .shopItemPrice {
+    font-size: 20px;
+    font-weight: 300;
+    color: #724cf9;
+  }
+}

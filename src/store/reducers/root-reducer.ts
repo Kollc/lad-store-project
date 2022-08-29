@@ -1,0 +1,7 @@
+import { NameSpace } from './../../consts';
+import { combineReducers } from "redux";
+import { productProcess } from '../products-process/product-process';
+
+export const rootReducer = combineReducers({
+    [NameSpace.Products]: productProcess.reducer,
+});

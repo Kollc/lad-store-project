@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import MainLayout from "../../main-layout/main-layout";
+import PageTitle from "../../page-title/page-title";
 import style from "./sign-up-page.module.scss";
 
 function SignUpPage(): JSX.Element {
@@ -15,7 +16,7 @@ function SignUpPage(): JSX.Element {
   return (
     <MainLayout>
       <section className={`${style.signUp} container`}>
-        <h1>Sign Up</h1>
+        <PageTitle title="Sign Up" />
         <form onSubmit={submitFormHandle}>
           <input
             type="text"
@@ -35,7 +36,9 @@ function SignUpPage(): JSX.Element {
             placeholder="Confim password"
             onChange={(evt) => setPassword(evt.target.value)}
           />
-          <p className={style.registerLink}>Already registered? <Link to='/sign-up'>Login</Link></p>
+          <p className={style.registerLink}>
+            Already registered? <Link to="/sign-in">Login</Link>
+          </p>
           <button type="submit">Отправить</button>
         </form>
       </section>
