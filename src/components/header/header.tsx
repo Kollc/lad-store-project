@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
 import style from "./header.module.scss";
-import cartIcon from "./imagen/cart.svg";
 
 function Header(): JSX.Element {
   return (
-    <div className="container">
-      <section className={style.header}>
+    <div className="background-wrapper">
+      <section className={`${style.header} container`}>
         <div className={style.logo}>
-          <Link to='/'><span>Lad</span>Store</Link>
+          <Link to="/">
+            <span>Lad</span>Store
+          </Link>
         </div>
         <nav className={style.menu}>
           <ul>
             <li>
-              <Link to='/'>Main</Link>
+              <Link to="/">Main</Link>
             </li>
             <li>
-              <Link to='/shop'>Shop</Link>
+              <Link to="/shop">Shop</Link>
             </li>
             <li>
               <a>About</a>
@@ -35,15 +36,15 @@ function Header(): JSX.Element {
               </a>
             </li>
             <li className={style.basket}>
-              <a>
+              <Link to="/cart">
                 <svg fill="#724cf9" width="20" height="20">
                   <use href="#icon-basket" />
                 </svg>
-              </a>
+              </Link>
               <span className={style.counter}>0</span>
             </li>
             <li>
-              <Link to='/sign-in'>Log in</Link>
+              <Link to="/sign-in">Log in</Link>
             </li>
           </ul>
         </div>

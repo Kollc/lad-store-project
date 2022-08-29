@@ -104,6 +104,8 @@
         .shopItemFooter {
           display: grid;
           grid-template-columns: 1fr 1fr;
+          align-self: center;
+          margin-top: auto;
 
           .shopItemPrice {
             font-size: 20px;

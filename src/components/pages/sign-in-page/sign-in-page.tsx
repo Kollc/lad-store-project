@@ -12,7 +12,8 @@ function SignInPage(): JSX.Element {
 
   return (
     <MainLayout>
-      <section className={style.signIn}>
+      <section className={`${style.signIn} container`}>
+        <h1>Sign In</h1>
         <form onSubmit={submitFormHandle}>
           <input
             type="text"

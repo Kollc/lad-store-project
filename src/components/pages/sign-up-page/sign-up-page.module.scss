@@ -1,4 +1,4 @@
-.signIn {
+.signUp {
   height: 100vh;
 
   h1 {
@@ -22,6 +22,16 @@
       border: none;
       background-color: #ddd;
       padding: 0 15px;
+    }
+
+    .registerLink {
+      font-size: 20px;
+      margin: 0;
+
+      a {
+        text-decoration: none;
+        color: #724cf9;
+      }
     }
 
     input:focus,

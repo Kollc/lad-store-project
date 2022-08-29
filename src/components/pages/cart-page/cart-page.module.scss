@@ -1,0 +1,144 @@
+.cart {
+  h1 {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #000;
+    border-bottom: 2px solid #000;
+    margin-top: 0;
+    padding-top: 30px;
+  }
+
+  .products {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 15px 0;
+      height: 135px;
+      border-bottom: 1px solid #724cf9;
+    }
+
+    li:first-child {
+      border-top: 1px solid #724cf9;
+    }
+  }
+
+  .cartCounter {
+    justify-self: end;
+    align-self: center;
+    b {
+      font-size: 20px;
+      margin: 0 15px;
+      color: #724cf9;
+    }
+
+    button {
+      border: 1px solid #724cf9;
+      border-radius: 5px;
+      background-color: transparent;
+      color: #724cf9;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+    }
+  }
+
+  .productItem {
+    display: grid;
+    grid-template-columns: 35px 1fr 2fr 1fr 1fr 1fr;
+    grid-template-areas: "button photo info price quantity total-price";
+
+    img {
+      height: 135px;
+      grid-area: photo;
+    }
+
+    .info {
+      grid-area: info;
+
+      h2 {
+        font-weight: 300;
+        text-transform: uppercase;
+      }
+
+      span {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
+
+    .price {
+      grid-area: price;
+      align-self: center;
+      font-size: 25px;
+      font-weight: 300;
+      justify-self: end;
+    }
+
+    .allPrice {
+      grid-area: total-price;
+      align-self: center;
+      font-size: 25px;
+      font-weight: 300;
+      justify-self: start;
+    }
+
+    .cartCounter {
+      grid-area: quantity;
+      justify-self: center;
+    }
+
+    .closeButton {
+      width: 35px;
+      height: 35px;
+      background-color: transparent;
+      border: none;
+      position: relative;
+      grid-area: button;
+      align-self: start;
+      justify-self: start;
+
+      div {
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        background-color: red;
+        top: 0;
+      }
+
+      div:first-child {
+        transform: rotate(45deg);
+      }
+
+      div:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .priceResult {
+    display: grid;
+    justify-content: end;
+    margin: 50px 0;
+
+    p {
+      font-size: 25px;
+      b {
+        font-size: 25px;
+        margin-right: 20px;
+      }
+    }
+
+    button {
+      background-color: #724cf9;
+      color: #fff;
+      font-size: 22px;
+      text-transform: uppercase;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+    }
+  }
+}

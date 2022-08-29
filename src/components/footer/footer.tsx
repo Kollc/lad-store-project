@@ -6,8 +6,8 @@ import youtubeIcon from "./images/youtube.png";
 
 function Footer(): JSX.Element {
   return (
-    <div className="container">
-      <footer className={style.footer}>
+    <div className="background-wrapper">
+      <footer className={`${style.footer} container`}>
         <div className={style.linksList}>
           <div>
             <h3>Company</h3>
