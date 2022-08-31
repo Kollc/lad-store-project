@@ -13,8 +13,7 @@
 
   form {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    gap: 20px 0;
+    grid-template-rows: 1fr 20px 1fr 20px 1fr 20px 1fr;
 
     input {
       border-radius: 20px;
@@ -22,6 +21,7 @@
       border: none;
       background-color: #ddd;
       padding: 0 15px;
+      margin-top: 10px;
     }
 
     .registerLink {
@@ -48,6 +48,7 @@
       border: none;
       padding: 10px 15px;
       border-radius: 5px;
+      cursor: pointer;
     }
   }
 }

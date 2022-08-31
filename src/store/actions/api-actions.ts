@@ -13,15 +13,12 @@ export const fetchProductsAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->(
-  "dataProducts/fetchProducts",
-  async (_arg, { dispatch, extra: api }) => {
-    try {
-      const { data } = await api.get<ProductType[]>(APIRoutes.Products);
-      dispatch(productProcess.setProducts(data));
-    } catch (error) {
-      console.log('error: ', error);
-      //   dispatch(productProcess.setErrorMessage());
-    }
+>("dataProducts/fetchProducts", async (_arg, { dispatch, extra: api }) => {
+  try {
+    const { data } = await api.get<ProductType[]>(APIRoutes.Products);
+    dispatch(productProcess.setProducts(data));
+  } catch (error) {
+    console.log("error: ", error);
+    //   dispatch(productProcess.setErrorMessage());
   }
-);
+});

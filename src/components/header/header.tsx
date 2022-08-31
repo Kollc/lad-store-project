@@ -1,7 +1,17 @@
+import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../hooks/store-hooks";
+import { auth } from "../../services/firebase/firebase-user-auth";
+import { getUserData } from "../../store/user-process/selector";
 import style from "./header.module.scss";
 
 function Header(): JSX.Element {
+  const user = useAppSelector(getUserData);
+
+  const clickLogoutHandle = async () => {
+    await signOut(auth);
+  };
+
   return (
     <div className="background-wrapper">
       <section className={`${style.header} container`}>
@@ -43,9 +53,22 @@ function Header(): JSX.Element {
               </Link>
               <span className={style.counter}>0</span>
             </li>
-            <li>
-              <Link to="/sign-up">Sing Up</Link>
-            </li>
+            {user.email ? (
+              <>
+                <li>
+                  <a>{user.email}</a>
+                </li>
+                <li>
+                  <a className={style.logout} onClick={clickLogoutHandle}>
+                    Logout
+                  </a>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link to="/sign-up">Sing Up</Link>
+              </li>
+            )}
           </ul>
         </div>
       </section>
