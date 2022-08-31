@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import CartPage from "../pages/cart-page/cart-page";
+import ErrorPage from "../pages/error-page/error-page";
 import MainPage from "../pages/main-page/main-page";
 import ShopPage from "../pages/shop-page/shop-page";
 import SignInPage from "../pages/sign-in-page/sign-in-page";
@@ -21,7 +22,7 @@ function App(): JSX.Element {
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/sign-in" element={<SignInPage />} />
-      <Route path="*" element={<div>Error page 404</div>} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 }
