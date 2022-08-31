@@ -8,7 +8,11 @@ import "./index.scss";
 import { auth } from "./services/firebase/firebase-user-auth";
 import { fetchProductsAction } from "./store/actions/api-actions";
 import { store } from "./store/store";
-import { setUserData } from "./store/user-process/user-process";
+import {
+  setAuthorizationStatus,
+  setUserData,
+} from "./store/user-process/user-process";
+import { AuthorizationStatusList } from "./types/type";
 
 store.dispatch(fetchProductsAction());
 
@@ -17,8 +21,10 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     const email = user.email;
     store.dispatch(setUserData({ email }));
+    store.dispatch(setAuthorizationStatus(AuthorizationStatusList.Auth));
   } else {
     store.dispatch(setUserData({ email: "" }));
+    store.dispatch(setAuthorizationStatus(AuthorizationStatusList.NoAuth));
   }
 });
 

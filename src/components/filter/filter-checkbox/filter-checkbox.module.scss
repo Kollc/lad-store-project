@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  margin-left: 15px;
+
+  .checkbox + label {
+    padding-left: 35px;
+    height: 30px;
+    display: block;
+    padding-top: 5px;
+    cursor: pointer;
+  }
+
+  .checkbox + label::before {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 0;
+    top: 0;
+    border: 1px solid #724cf9;
+    border-radius: 5px;
+  }
+
+  .customChecked {
+    display: none;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 2px;
+    top: 0;
+    z-index: -1;
+  }
+  .checkbox:checked ~ .customChecked {
+    display: block;
+  }
+}

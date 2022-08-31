@@ -41,12 +41,14 @@ function SignInPage(): JSX.Element {
         <PageTitle title="Sign In" />
         <form onSubmit={submitFormHandle}>
           <input
+            name="email"
             type="text"
             value={email}
             placeholder="Email"
             onChange={(evt) => setEmail(evt.target.value)}
           />
           <input
+            name="password"
             type="password"
             value={password}
             placeholder="Password"

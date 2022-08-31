@@ -13,7 +13,6 @@ export type ProductType = {
 };
 
 export type UserProcessType = {
-  token: string;
   AuthorizationStatus: AuthorizationStatusList;
   error: string;
   userData: UserType;

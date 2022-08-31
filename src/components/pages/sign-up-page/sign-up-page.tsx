@@ -48,6 +48,7 @@ function SignUpPage(): JSX.Element {
         <PageTitle title="Sign Up" />
         <form onSubmit={submitFormHandle}>
           <input
+            name="email"
             type="text"
             value={email}
             placeholder="Email"
@@ -55,6 +56,7 @@ function SignUpPage(): JSX.Element {
           />
           <span>{errorEmail}</span>
           <input
+            name="password"
             type="password"
             value={password}
             placeholder="Password"
@@ -62,6 +64,7 @@ function SignUpPage(): JSX.Element {
           />
           <span>{errorPassword}</span>
           <input
+            name="confimPassword"
             type="password"
             value={confimPassword}
             placeholder="Confim password"
