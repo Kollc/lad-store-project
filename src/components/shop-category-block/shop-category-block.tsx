@@ -1,18 +1,23 @@
-import ShopItem from "../shop-item/shop-item";
+import { ProductType } from "../../types/type";
+import ShopProductList from "../shop-products-list/shop-product-list";
+import Sort from "../sort/sort";
 import style from "./shop-category-block.module.scss";
-function ShopCategoryBlock(): JSX.Element {
+
+type ShopCategoryBlockProps = {
+  showerProducts: ProductType[];
+};
+
+function ShopCategoryBlock({
+  showerProducts,
+}: ShopCategoryBlockProps): JSX.Element {
   return (
     <div className={style.categoryBlock}>
-      <div className={style.categoryHeader}>
-        <h2>Category</h2>
-        <div></div>
-      </div>
-      <ul>
-        <ShopItem />
-        <ShopItem />
-        <ShopItem />
-        <ShopItem />
-      </ul>
+      <Sort />
+      {showerProducts.length > 0 ? (
+        <ShopProductList products={showerProducts} />
+      ) : (
+        <h3 className={style.emptyProduct}>Nothing was found!</h3>
+      )}
     </div>
   );
 }

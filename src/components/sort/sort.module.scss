@@ -1,0 +1,54 @@
+.sort {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 17px;
+
+  .typeSort {
+    justify-self: start;
+    font-size: 20px;
+    font-weight: 300;
+    color: #724cf9;
+    text-transform: uppercase;
+
+    button {
+      border: none;
+      background-color: transparent;
+      font-size: 17px;
+      text-transform: lowercase;
+      border-bottom: 1px solid #724cf9;
+      margin-left: 20px;
+    }
+  }
+
+  .vectorSort {
+    justify-self: end;
+
+    .acitve::after {
+      border-top-color: #724cf9;
+    }
+
+    .desc {
+      transform: rotate(180deg);
+      left: 0;
+      bottom: 10px;
+    }
+
+    button {
+      position: relative;
+      background: transparent;
+      border: none;
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+    }
+
+    button::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border: 12px solid transparent;
+      border-top: 15px solid #000;
+    }
+  }
+}

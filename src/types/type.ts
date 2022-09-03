@@ -1,6 +1,8 @@
 export type ProductProcessType = {
   products: ProductType[];
   error: string;
+  categories: string[];
+  maxProductPrice: number;
 };
 
 export type ProductType = {

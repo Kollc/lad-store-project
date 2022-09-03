@@ -1,14 +1,26 @@
+import { ChangeEvent } from "react";
+import { getUpperCaseFirst } from "../../../../utils/utils";
 import style from "./filter-checkbox.module.scss";
 
-function FilterCheckbox(): JSX.Element {
+type FilterCheckboxProps = {
+  category: string;
+  onChangeCategory: (value: ChangeEvent<HTMLInputElement>) => void;
+};
+
+function FilterCheckbox({
+  category,
+  onChangeCategory,
+}: FilterCheckboxProps): JSX.Element {
   return (
     <div className={style.container}>
       <input
         className={`${style.checkbox} visually-hidden`}
         type="checkbox"
-        id="jewelery"
+        id={category}
+        value={category}
+        onChange={onChangeCategory}
       />
-      <label htmlFor="jewelery">Jewelery</label>
+      <label htmlFor={category}>{getUpperCaseFirst(category)}</label>
       <div className={style.customChecked}>
         <svg
           fill="#724cf9"

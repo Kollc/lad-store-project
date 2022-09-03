@@ -4,7 +4,9 @@ import { ProductProcessType } from "../../types/type";
 
 const initialState: ProductProcessType = {
   products: [],
-  error: '',
+  error: "",
+  categories: [],
+  maxProductPrice: 0,
 };
 
 export const productProcess = createSlice({
@@ -15,9 +17,20 @@ export const productProcess = createSlice({
       state.products = action.payload;
     },
     setError: (state, action) => {
-        state.error = action.payload;
-    }
+      state.error = action.payload;
+    },
+    setProductCategories: (state, action) => {
+      state.categories = action.payload;
+    },
+    setMaxProductPrice: (state, action) => {
+      state.maxProductPrice = action.payload;
+    },
   },
 });
 
-export const { setProducts } = productProcess.actions;
+export const {
+  setProducts,
+  setProductCategories,
+  setError,
+  setMaxProductPrice,
+} = productProcess.actions;

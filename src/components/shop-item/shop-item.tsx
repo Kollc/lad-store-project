@@ -1,15 +1,29 @@
-import style from './shop-item.module.scss'
+import { Link } from "react-router-dom";
+import { ProductType } from "../../types/type";
+import { getShortText } from "../../utils/utils";
+import style from "./shop-item.module.scss";
 
-function ShopItem(): JSX.Element {
+type ShopItemProps = {
+  product: ProductType;
+};
+
+function ShopItem({ product }: ShopItemProps): JSX.Element {
   return (
-    <li>
-      <img src="https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg" />
-      <div>
-        <h3>Margherita</h3>
-        <p>Classic delight with 100% real mozzarella cheese</p>
+    <li className={style.cartItem}>
+      <img src={product.image} alt={product.title} />
+
+      <div className={style.textInfo}>
+        <h3>
+          <Link to="/shop/1">{product.title}</Link>
+        </h3>
+        <p className={style.categoryName}>
+          <span>Category: </span>
+          {product.category}
+        </p>
+        <p>{getShortText(product.description)}</p>
       </div>
       <div className={style.shopItemFooter}>
-        <p className={style.shopItemPrice}>1579 руб.</p>
+        <p className={style.shopItemPrice}>{product.price.toLocaleString()}$</p>
         <div className={style.cartCounter}>
           <button>+</button>
           <b>1</b>
