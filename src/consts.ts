@@ -17,3 +17,13 @@ export enum AppRoute {
 
 export const MIN_TEXT_LENGTH = 0;
 export const MAX_TEXT_LENGTH = 100;
+
+export enum TypeSort {
+  ByPrice = "byPrice",
+  Default = "default",
+}
+
+export enum VectorSort {
+  Asc = "ASC",
+  Desc = "DESC",
+}

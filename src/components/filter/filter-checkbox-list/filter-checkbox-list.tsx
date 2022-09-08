@@ -1,18 +1,35 @@
-import { ChangeEvent } from "react";
 import { useAppSelector } from "../../../hooks/store-hooks";
 import { getProductCategories } from "../../../store/products-process/selector";
 import FilterCheckbox from "./filter-checkbox/filter-checkbox";
+import { ChangeEvent } from "react";
 
 type FilterCheckboxListProps = {
-  changeCheckboxCategoriesHandle: (
-    value: ChangeEvent<HTMLInputElement>
-  ) => void;
+  setFilterCategories: (value: string[]) => void;
+  filterCategories: string[];
 };
 
 function FilterCheckboxList({
-  changeCheckboxCategoriesHandle,
+  setFilterCategories,
+  filterCategories,
 }: FilterCheckboxListProps): JSX.Element {
   const categories = useAppSelector(getProductCategories);
+
+  const changeCheckboxCategoriesHandle = (
+    evt: ChangeEvent<HTMLInputElement>
+  ) => {
+    const category = evt.target.value;
+
+    if (filterCategories.includes(category)) {
+      setFilterCategories(
+        filterCategories.filter(
+          (filterCategories) => filterCategories !== category
+        )
+      );
+    } else {
+      setFilterCategories([...filterCategories, category]);
+    }
+  };
+
   return (
     <>
       {categories.map((category) => (
@@ -20,6 +37,7 @@ function FilterCheckboxList({
           key={category}
           category={category}
           onChangeCategory={changeCheckboxCategoriesHandle}
+          filterCategories={filterCategories}
         />
       ))}
     </>

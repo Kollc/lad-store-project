@@ -14,9 +14,12 @@
       border: none;
       background-color: transparent;
       font-size: 17px;
-      text-transform: lowercase;
-      border-bottom: 1px solid #724cf9;
       margin-left: 20px;
+      cursor: pointer;
+    }
+
+    .activeSort {
+      border-bottom: 1px solid #724cf9;
     }
   }
 
@@ -27,7 +30,7 @@
       border-top-color: #724cf9;
     }
 
-    .desc {
+    .asc {
       transform: rotate(180deg);
       left: 0;
       bottom: 10px;
@@ -40,6 +43,7 @@
       width: 30px;
       height: 30px;
       margin: 0 5px;
+      cursor: pointer;
     }
 
     button::after {

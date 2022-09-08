@@ -1,3 +1,4 @@
+import { TypeSort, VectorSort } from "./../../consts";
 import { createSlice } from "@reduxjs/toolkit";
 import { NameSpace } from "../../consts";
 import { ProductProcessType } from "../../types/type";
@@ -7,6 +8,9 @@ const initialState: ProductProcessType = {
   error: "",
   categories: [],
   maxProductPrice: 0,
+  showProducts: [],
+  vectorSort: VectorSort.Asc,
+  typeSort: TypeSort.Default,
 };
 
 export const productProcess = createSlice({
@@ -15,6 +19,7 @@ export const productProcess = createSlice({
   reducers: {
     setProducts: (state, action) => {
       state.products = action.payload;
+      state.showProducts = action.payload;
     },
     setError: (state, action) => {
       state.error = action.payload;
@@ -25,6 +30,15 @@ export const productProcess = createSlice({
     setMaxProductPrice: (state, action) => {
       state.maxProductPrice = action.payload;
     },
+    setShowProducts: (state, action) => {
+      state.showProducts = action.payload;
+    },
+    setTypeSort: (state, action) => {
+      state.typeSort = action.payload;
+    },
+    setVectorSort: (state, action) => {
+      state.vectorSort = action.payload;
+    },
   },
 });
 
@@ -33,4 +47,7 @@ export const {
   setProductCategories,
   setError,
   setMaxProductPrice,
+  setShowProducts,
+  setVectorSort,
+  setTypeSort,
 } = productProcess.actions;

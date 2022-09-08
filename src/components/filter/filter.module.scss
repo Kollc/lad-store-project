@@ -36,4 +36,11 @@
     margin: 20px 0;
     padding-bottom: 20px;
   }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    column-gap: 15px;
+  }
 }

@@ -1,8 +1,14 @@
+import { VectorSort } from "./../consts";
+import { TypeSort } from "../consts";
+
 export type ProductProcessType = {
   products: ProductType[];
   error: string;
   categories: string[];
   maxProductPrice: number;
+  showProducts: ProductType[];
+  vectorSort: VectorSort;
+  typeSort: TypeSort;
 };
 
 export type ProductType = {

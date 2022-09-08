@@ -7,22 +7,22 @@ type FilterPriceProps = {
   setMinPrice: (value: number | "") => void;
   setMaxPrice: (value: number | "") => void;
   maxPrice: number | "";
+  minPrice: number | "";
 };
 
 function FilterPrice({
   setMinPrice,
   setMaxPrice,
   maxPrice,
+  minPrice,
 }: FilterPriceProps): JSX.Element {
   const maxProductPrice = useAppSelector(getMaxProductPrice);
-  const [currentMinPrice, setCurrentMinPrice] = useState<number | "">("");
-  const [currentMaxPrice, setCurrentMaxPrice] = useState<number | "">(maxPrice);
 
   const changeMinPriceInputHandle = (evt: ChangeEvent<HTMLInputElement>) => {
     const minPriceValue = Number(evt.target.value);
 
     if (minPriceValue >= 0 && minPriceValue < maxProductPrice) {
-      setCurrentMinPrice(minPriceValue);
+      setMinPrice(minPriceValue);
     }
   };
 
@@ -30,30 +30,30 @@ function FilterPrice({
     const maxPriceValue = Number(evt.target.value);
 
     if (maxPriceValue < maxProductPrice && maxPriceValue >= 0) {
-      setCurrentMaxPrice(maxPriceValue);
+      setMaxPrice(maxPriceValue);
     }
   };
 
   const blurMinPriceInputHandle = () => {
-    if (currentMinPrice > currentMaxPrice && currentMaxPrice !== "") {
-      setCurrentMinPrice(0);
-    } else if (currentMaxPrice) {
-      setMinPrice(currentMinPrice);
-      setMaxPrice(currentMaxPrice);
+    if (minPrice > maxPrice && maxPrice !== "") {
+      setMinPrice(0);
+    } else if (maxPrice) {
+      setMinPrice(minPrice);
+      setMaxPrice(maxPrice);
     } else {
-      setMinPrice(currentMinPrice);
+      setMinPrice(minPrice);
       setMaxPrice(maxProductPrice);
     }
   };
 
   const blurMaxPriceInputHandle = () => {
-    if (currentMaxPrice < currentMinPrice && currentMinPrice !== "") {
-      setCurrentMaxPrice(maxProductPrice);
-    } else if (currentMinPrice) {
-      setMinPrice(currentMinPrice);
-      setMaxPrice(currentMaxPrice);
+    if (maxPrice < minPrice && minPrice !== "") {
+      setMaxPrice(maxProductPrice);
+    } else if (minPrice) {
+      setMinPrice(minPrice);
+      setMaxPrice(maxPrice);
     } else {
-      setMaxPrice(currentMaxPrice);
+      setMaxPrice(maxPrice);
       setMinPrice(0);
     }
   };
@@ -65,7 +65,7 @@ function FilterPrice({
           type="string"
           name="minPrice"
           placeholder="0"
-          value={currentMinPrice}
+          value={minPrice}
           onChange={changeMinPriceInputHandle}
           onBlur={blurMinPriceInputHandle}
         />
@@ -73,7 +73,7 @@ function FilterPrice({
           type="string"
           name="maxPrice"
           placeholder={String(maxProductPrice)}
-          value={currentMaxPrice}
+          value={maxPrice}
           onChange={changeMaxPriceInputHandle}
           onBlur={blurMaxPriceInputHandle}
         />

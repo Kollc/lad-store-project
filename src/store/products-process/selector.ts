@@ -1,3 +1,4 @@
+import { VectorSort, TypeSort } from "./../../consts";
 import { NameSpace } from "../../consts";
 import { State } from "../../types/state";
 import { ProductType } from "./../../types/type";
@@ -13,3 +14,12 @@ export const getProductError = (state: State): string =>
 
 export const getMaxProductPrice = (state: State): number =>
   state[NameSpace.Products].maxProductPrice;
+
+export const getShowProducts = (state: State): ProductType[] =>
+  state[NameSpace.Products].showProducts;
+
+export const getVectorSort = (state: State): VectorSort =>
+  state[NameSpace.Products].vectorSort;
+
+export const getTypeSort = (state: State): TypeSort | null =>
+  state[NameSpace.Products].typeSort;

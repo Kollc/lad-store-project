@@ -5,11 +5,13 @@ import style from "./filter-checkbox.module.scss";
 type FilterCheckboxProps = {
   category: string;
   onChangeCategory: (value: ChangeEvent<HTMLInputElement>) => void;
+  filterCategories: string[];
 };
 
 function FilterCheckbox({
   category,
   onChangeCategory,
+  filterCategories,
 }: FilterCheckboxProps): JSX.Element {
   return (
     <div className={style.container}>
@@ -19,6 +21,7 @@ function FilterCheckbox({
         id={category}
         value={category}
         onChange={onChangeCategory}
+        checked={filterCategories.includes(category)}
       />
       <label htmlFor={category}>{getUpperCaseFirst(category)}</label>
       <div className={style.customChecked}>
