@@ -10,14 +10,17 @@ import {
   setUserData,
   setUserError,
 } from "../../../store/user-process/user-process";
-import { useAppDispatch } from "../../../hooks/store-hooks";
+import { useAppDispatch, useAppSelector } from "../../../hooks/store-hooks";
 import { AuthorizationStatusList } from "../../../types/type";
+import { getUserError } from "../../../store/user-process/selector";
+import { ErrorMessagesFirebase } from "../../../consts";
 
 function SignInPage(): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const naviagte = useNavigate();
   const dispatch = useAppDispatch();
+  const error = useAppSelector(getUserError);
 
   const submitFormHandle = (evt: FormEvent) => {
     evt.preventDefault();
@@ -31,7 +34,7 @@ function SignInPage(): JSX.Element {
       })
       .catch((error) => {
         dispatch(setAuthorizationStatus(AuthorizationStatusList.NoAuth));
-        dispatch(setUserError(error.message));
+        dispatch(setUserError(ErrorMessagesFirebase.get(error.code)));
       });
   };
 
@@ -54,6 +57,7 @@ function SignInPage(): JSX.Element {
             placeholder="Password"
             onChange={(evt) => setPassword(evt.target.value)}
           />
+          <span className={style.error}>{error}</span>
           <button type="submit">Отправить</button>
         </form>
       </section>

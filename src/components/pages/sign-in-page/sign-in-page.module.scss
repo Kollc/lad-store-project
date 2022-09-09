@@ -13,7 +13,7 @@
 
   form {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 30px 1fr;
     gap: 20px 0;
 
     input {
@@ -41,5 +41,12 @@
       border-radius: 5px;
       cursor: pointer;
     }
+  }
+
+  .error {
+    height: 30px;
+    margin-bottom: -30px;
+    color: red;
+    font-size: 22px;
   }
 }

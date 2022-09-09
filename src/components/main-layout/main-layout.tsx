@@ -14,7 +14,8 @@ function MainLayout({ children }: MainLayoutProps): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const products: ProductType[] = useAppSelector(getProducts);
 
-  return products && authorizationStatus !== AuthorizationStatusList.Unknown ? (
+  return products.length > 0 &&
+    authorizationStatus !== AuthorizationStatusList.Unknown ? (
     <>
       <Header />
       {children}

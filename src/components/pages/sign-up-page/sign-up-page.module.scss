@@ -13,7 +13,7 @@
 
   form {
     display: grid;
-    grid-template-rows: 1fr 20px 1fr 20px 1fr 20px 1fr;
+    grid-template-rows: 1fr 1fr 1fr 30px 1fr;
 
     input {
       border-radius: 20px;
@@ -27,7 +27,7 @@
 
     .registerLink {
       font-size: 20px;
-      margin: 0;
+      margin: 20px 0;
 
       a {
         text-decoration: none;
@@ -37,8 +37,7 @@
 
     input:focus,
     input:focus-visible {
-      border: 2px solid #724cf9;
-      outline: none;
+      outline: 2px solid #724cf9;
     }
 
     button {
@@ -51,5 +50,11 @@
       border-radius: 5px;
       cursor: pointer;
     }
+  }
+
+  .error {
+    height: 30px;
+    font-size: 22px;
+    color: red;
   }
 }

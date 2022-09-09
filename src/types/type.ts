@@ -11,6 +11,13 @@ export type ProductProcessType = {
   typeSort: TypeSort;
 };
 
+export type CartProcessType = {
+  productInCart: { [id: string]: ProductInCart };
+  totalPrice: number;
+};
+
+export type ProductInCart = { product: ProductType; count: number };
+
 export type ProductType = {
   id: number;
   title: string;

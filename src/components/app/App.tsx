@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { AppRoutes } from "../../consts";
 import CartPage from "../pages/cart-page/cart-page";
 import ErrorPage from "../pages/error-page/error-page";
 import MainPage from "../pages/main-page/main-page";
@@ -10,18 +11,18 @@ import PrivateRoute from "../private-route/private-route";
 function App(): JSX.Element {
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
+      <Route path={AppRoutes.Main} element={<MainPage />} />
       <Route
-        path="/cart"
+        path={AppRoutes.Cart}
         element={
           <PrivateRoute>
             <CartPage />
           </PrivateRoute>
         }
       />
-      <Route path="/shop" element={<ShopPage />} />
-      <Route path="/sign-up" element={<SignUpPage />} />
-      <Route path="/sign-in" element={<SignInPage />} />
+      <Route path={AppRoutes.Shop} element={<ShopPage />} />
+      <Route path={AppRoutes.SignUp} element={<SignUpPage />} />
+      <Route path={AppRoutes.SignIn} element={<SignInPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );

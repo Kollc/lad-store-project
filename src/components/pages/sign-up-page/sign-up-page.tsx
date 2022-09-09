@@ -1,8 +1,10 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../hooks/store-hooks";
+import { AppRoutes, ErrorMessagesFirebase } from "../../../consts";
+import { useAppDispatch, useAppSelector } from "../../../hooks/store-hooks";
 import { auth } from "../../../services/firebase/firebase-user-auth";
+import { getUserError } from "../../../store/user-process/selector";
 import {
   setAuthorizationStatus,
   setUserData,
@@ -15,11 +17,10 @@ import style from "./sign-up-page.module.scss";
 
 function SignUpPage(): JSX.Element {
   const dispatch = useAppDispatch();
+  const error = useAppSelector(getUserError);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confimPassword, setConfimPassword] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
   const naviagte = useNavigate();
 
   const submitFormHandle = async (evt: FormEvent) => {
@@ -31,14 +32,14 @@ function SignUpPage(): JSX.Element {
           const user = userCredential.user;
           dispatch(setUserData({ email: user.email }));
           dispatch(setAuthorizationStatus(AuthorizationStatusList.Auth));
-          naviagte("/");
+          naviagte(AppRoutes.Shop);
         })
         .catch((error) => {
           dispatch(setAuthorizationStatus(AuthorizationStatusList.NoAuth));
-          dispatch(setUserError(error.message));
+          dispatch(setUserError(ErrorMessagesFirebase.get(error.code)));
         });
     } else {
-      setErrorPassword("Пароли должны быть одинаковые!");
+      dispatch(setUserError(ErrorMessagesFirebase.get("passwordNotConfim")));
     }
   };
 
@@ -54,7 +55,6 @@ function SignUpPage(): JSX.Element {
             placeholder="Email"
             onChange={(evt) => setEmail(evt.target.value)}
           />
-          <span>{errorEmail}</span>
           <input
             name="password"
             type="password"
@@ -62,7 +62,6 @@ function SignUpPage(): JSX.Element {
             placeholder="Password"
             onChange={(evt) => setPassword(evt.target.value)}
           />
-          <span>{errorPassword}</span>
           <input
             name="confimPassword"
             type="password"
@@ -70,7 +69,7 @@ function SignUpPage(): JSX.Element {
             placeholder="Confim password"
             onChange={(evt) => setConfimPassword(evt.target.value)}
           />
-          <span>{errorPassword}</span>
+          <span className={style.error}>{error}</span>
           <p className={style.registerLink}>
             Already registered? <Link to="/sign-in">Login</Link>
           </p>

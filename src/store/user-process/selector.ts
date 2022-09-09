@@ -8,3 +8,6 @@ export const getAuthorizationStatus = (state: State): AuthorizationStatusList =>
 
 export const getUserData = (state: State): UserType =>
   state[NameSpace.User].userData;
+
+export const getUserError = (state: State): string =>
+  state[NameSpace.User].error;
