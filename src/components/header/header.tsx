@@ -2,11 +2,13 @@ import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../hooks/store-hooks";
 import { auth } from "../../services/firebase/firebase-user-auth";
+import { getProductsInCart } from "../../store/cart-process/selector";
 import { getUserData } from "../../store/user-process/selector";
 import style from "./header.module.scss";
 
 function Header(): JSX.Element {
   const user = useAppSelector(getUserData);
+  const productsInCart = useAppSelector(getProductsInCart);
 
   const clickLogoutHandle = async () => {
     await signOut(auth);
@@ -51,7 +53,9 @@ function Header(): JSX.Element {
                   <use href="#icon-basket" />
                 </svg>
               </Link>
-              <span className={style.counter}>0</span>
+              <span className={style.counter}>
+                {Object.keys(productsInCart).length}
+              </span>
             </li>
             {user.email ? (
               <>

@@ -52,6 +52,7 @@
     grid-area: button;
     align-self: start;
     justify-self: start;
+    cursor: pointer;
 
     div {
       position: absolute;
@@ -88,6 +89,7 @@
       width: 30px;
       height: 30px;
       font-size: 20px;
+      cursor: pointer;
     }
   }
 }

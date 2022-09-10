@@ -4,7 +4,7 @@ export const BASE_URL = "https://fakestoreapi.com";
 export enum NameSpace {
   Products = "PRODUCTS",
   User = "USER",
-  Cart = 'CART',
+  Cart = "CART",
 }
 
 export enum APIRoutes {
@@ -18,10 +18,6 @@ export enum AppRoutes {
   Cart = "/cart",
   SignIn = "/sign-in",
   SignUp = "/sign-up",
-}
-
-export enum AppRoute {
-  SignIn = "/sign-in",
 }
 
 export const MIN_TEXT_LENGTH = 0;
@@ -43,3 +39,6 @@ export const ErrorMessagesFirebase = new Map([
   ["auth/invalid-email", "Please enter a valid email!"],
   ["auth/weak-password", "Please enter a better password!"],
 ]);
+
+export const MAX_PRODUCT_COUNT_IN_CART = 99;
+export const LOCAL_STORAGE_NAME = "productInCart";
