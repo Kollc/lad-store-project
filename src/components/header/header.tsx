@@ -1,14 +1,17 @@
 import { signOut } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { AppRoutes } from "../../consts";
 import { useAppSelector } from "../../hooks/store-hooks";
 import { auth } from "../../services/firebase/firebase-user-auth";
 import { getProductsInCart } from "../../store/cart-process/selector";
 import { getUserData } from "../../store/user-process/selector";
 import style from "./header.module.scss";
+import MobileMenu from "./mobile-menu/mobile-menu";
 
 function Header(): JSX.Element {
   const user = useAppSelector(getUserData);
   const productsInCart = useAppSelector(getProductsInCart);
+  const location = useLocation();
 
   const clickLogoutHandle = async () => {
     await signOut(auth);
@@ -25,28 +28,29 @@ function Header(): JSX.Element {
         <nav className={style.menu}>
           <ul>
             <li>
-              <Link to="/">Main</Link>
+              <Link
+                className={
+                  location.pathname === AppRoutes.Main ? style.activeLink : ""
+                }
+                to="/"
+              >
+                Main
+              </Link>
             </li>
             <li>
-              <Link to="/shop">Shop</Link>
-            </li>
-            <li>
-              <a>About</a>
-            </li>
-            <li>
-              <a>Contacts</a>
+              <Link
+                className={
+                  location.pathname === AppRoutes.Shop ? style.activeLink : ""
+                }
+                to="/shop"
+              >
+                Shop
+              </Link>
             </li>
           </ul>
         </nav>
         <div className={style.userMenu}>
           <ul>
-            <li>
-              <a>
-                <svg fill="#724cf9" width="20" height="20">
-                  <use href="#icon-search" />
-                </svg>
-              </a>
-            </li>
             <li className={style.basket}>
               <Link to="/cart">
                 <svg fill="#724cf9" width="20" height="20">
@@ -59,7 +63,7 @@ function Header(): JSX.Element {
             </li>
             {user.email ? (
               <>
-                <li>
+                <li className={style.userEmail}>
                   <a>{user.email}</a>
                 </li>
                 <li>
@@ -75,6 +79,8 @@ function Header(): JSX.Element {
             )}
           </ul>
         </div>
+
+        <MobileMenu clickLogoutHandle={clickLogoutHandle}/>
       </section>
     </div>
   );
