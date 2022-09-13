@@ -9,6 +9,7 @@ import { CartProcessType } from "../../types/type";
 const initialState: CartProcessType = {
   totalPrice: 0,
   productInCart: {},
+  isOrderSent: false,
 };
 
 export const cartProcess = createSlice({
@@ -82,6 +83,19 @@ export const cartProcess = createSlice({
         state.totalPrice = sum;
       }
     },
+
+    clearCart: (state) => {
+      state.totalPrice = 0;
+      state.productInCart = {};
+      localStorage.removeItem(LOCAL_STORAGE_NAME);
+    },
+
+    setIsOrderSent: (state) => {
+      state.isOrderSent = true;
+    },
+    resetIsOrderSent: (state) => {
+      state.isOrderSent = false;
+    },
   },
 });
 
@@ -90,4 +104,7 @@ export const {
   decreaseProductCart,
   deleteProductCart,
   checkSaveCart,
+  clearCart,
+  setIsOrderSent,
+  resetIsOrderSent,
 } = cartProcess.actions;

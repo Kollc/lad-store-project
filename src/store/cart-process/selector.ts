@@ -11,3 +11,7 @@ export const getProductsInCart = (
 export const getTotalPriceCart = (state: State): number => {
   return state[NameSpace.Cart].totalPrice;
 };
+
+export const getIsOrderSent = (state: State): boolean => {
+  return state[NameSpace.Cart].isOrderSent;
+};

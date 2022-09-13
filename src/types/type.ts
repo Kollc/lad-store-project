@@ -14,6 +14,7 @@ export type ProductProcessType = {
 export type CartProcessType = {
   productInCart: { [id: string]: ProductInCart };
   totalPrice: number;
+  isOrderSent: boolean;
 };
 
 export type ProductInCart = { product: ProductType; count: number };

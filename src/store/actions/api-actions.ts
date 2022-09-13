@@ -1,16 +1,24 @@
-import { auth } from "./../../services/firebase/firebase-user-auth";
 import * as productProcess from "./../products-process/product-process";
-import { AuthorizationStatusList, ProductType } from "./../../types/type";
+import {
+  AuthorizationStatusList,
+  ProductInCart,
+  ProductType,
+} from "./../../types/type";
 import { AxiosInstance } from "axios";
 import { AppDispatch, State } from "./../../types/state";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { APIRoutes, TIMEOUT_RESET_ERROR } from "../../consts";
+import { APIRoutes, TIMEOUT_RESET_MESSAGE } from "../../consts";
 import { Auth, onAuthStateChanged } from "firebase/auth";
 import {
   setAuthorizationStatus,
   setUserData,
 } from "../user-process/user-process";
 import { errorHandler } from "../../services/error-handler";
+import {
+  clearCart,
+  resetIsOrderSent,
+  setIsOrderSent,
+} from "../cart-process/cart-process";
 
 export const fetchProductsAction = createAsyncThunk<
   void,
@@ -28,7 +36,7 @@ export const fetchProductsAction = createAsyncThunk<
     dispatch(productProcess.setError(errorHandler(error)));
     setTimeout(() => {
       dispatch(productProcess.resetError());
-    }, TIMEOUT_RESET_ERROR);
+    }, TIMEOUT_RESET_MESSAGE);
   }
 });
 
@@ -52,7 +60,7 @@ export const fetchProductCategoriesAction = createAsyncThunk<
       dispatch(productProcess.setError(errorHandler(error)));
       setTimeout(() => {
         dispatch(productProcess.resetError());
-      }, TIMEOUT_RESET_ERROR);
+      }, TIMEOUT_RESET_MESSAGE);
     }
   }
 );
@@ -76,4 +84,23 @@ export const checkAuthUserAction = createAsyncThunk<
       dispatch(setAuthorizationStatus(AuthorizationStatusList.NoAuth));
     }
   });
+});
+
+export const sendOrderAction = createAsyncThunk<
+  void,
+  ProductInCart[],
+  {
+    dispatch: AppDispatch;
+    state: State;
+  }
+>("cartData/sendOrder", async (order, { dispatch }) => {
+  console.log("Заказ отправлен: ", order);
+  //Фейковая отправка заказа, тк fake api не предостовляет возможности отправить post запрос с заказом
+
+  dispatch(setIsOrderSent());
+  setTimeout(() => {
+    dispatch(resetIsOrderSent());
+  }, TIMEOUT_RESET_MESSAGE);
+
+  dispatch(clearCart());
 });

@@ -37,6 +37,10 @@
   .orderSend {
     cursor: pointer;
   }
+
+  .orderSend:disabled {
+    opacity: 0.5;
+  }
 }
 
 @media (max-width: 500px) {
