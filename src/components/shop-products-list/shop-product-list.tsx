@@ -8,7 +8,7 @@ type ShopProductListProps = {
 
 function ShopProductList({ products }: ShopProductListProps): JSX.Element {
   return (
-    <ul className={style.shopProdctList}>
+    <ul className={style.shopProductList}>
       {products.map((product) => (
         <ShopItem key={product.id} product={product} />
       ))}

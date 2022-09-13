@@ -32,19 +32,21 @@ function CartProductItem({
         <h2>{product.title}</h2>
         <span>{product.category}</span>
       </div>
-      <p className={style.price}>{product.price.toLocaleString()}$</p>
-      <div className={style.cartCounter}>
-        <button onClick={() => dispatch(increaseProductCart(product))}>
-          +
-        </button>
-        <b>{count}</b>
-        <button onClick={() => dispatch(decreaseProductCart(product))}>
-          -
-        </button>
+      <div className={style.priceWrapper}>
+        <p className={style.price}>{product.price.toLocaleString()}$</p>
+        <div className={style.cartCounter}>
+          <button onClick={() => dispatch(increaseProductCart(product))}>
+            +
+          </button>
+          <b>{count}</b>
+          <button onClick={() => dispatch(decreaseProductCart(product))}>
+            -
+          </button>
+        </div>
+        <p className={style.allPrice}>
+          {(Number(product.price) * count).toLocaleString()}$
+        </p>
       </div>
-      <p className={style.allPrice}>
-        {(Number(product.price) * count).toLocaleString()}$
-      </p>
     </li>
   );
 }

@@ -39,6 +39,9 @@ export const productProcess = createSlice({
     setVectorSort: (state, action) => {
       state.vectorSort = action.payload;
     },
+    resetError: (state) => {
+      state.error = "";
+    },
   },
 });
 
@@ -50,4 +53,5 @@ export const {
   setShowProducts,
   setVectorSort,
   setTypeSort,
+  resetError,
 } = productProcess.actions;

@@ -42,3 +42,5 @@ export enum AuthorizationStatusList {
   NoAuth = "NO_AUTH",
   Unknown = "UNKNOWN",
 }
+
+export type ErrorType = unknown;

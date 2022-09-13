@@ -1,7 +1,8 @@
 import { useAppSelector } from "../../hooks/store-hooks";
-import { getProducts } from "../../store/products-process/selector";
+import { getErrorProducts, getProducts } from "../../store/products-process/selector";
 import { getAuthorizationStatus } from "../../store/user-process/selector";
 import { AuthorizationStatusList, ProductType } from "../../types/type";
+import ErrorMessage from "../error-message/error-message";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import Spinner from "../spinner/spinner";
@@ -13,6 +14,7 @@ type MainLayoutProps = {
 function MainLayout({ children }: MainLayoutProps): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const products: ProductType[] = useAppSelector(getProducts);
+  const error = useAppSelector(getErrorProducts);
 
   return products.length > 0 &&
     authorizationStatus !== AuthorizationStatusList.Unknown ? (
@@ -25,6 +27,7 @@ function MainLayout({ children }: MainLayoutProps): JSX.Element {
     <>
       <Header />
       <Spinner />
+      {error && <ErrorMessage error={error}/>}
       <Footer />
     </>
   );

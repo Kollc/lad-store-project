@@ -1,6 +1,10 @@
 .filter {
   height: 400px;
 
+  .mobileOpenIcon {
+    display: none;
+  }
+
   h2 {
     position: relative;
     font-size: 30px;
@@ -42,5 +46,59 @@
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     column-gap: 15px;
+  }
+}
+
+@media (max-width: 700px) {
+  .filter {
+    padding: 0 17px;
+
+    .heaaderFilter {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobileOpenIcon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: transparent;
+      height: 30px;
+      width: 30px;
+      padding: 0;
+
+      span {
+        display: block;
+        height: 2px;
+        width: 60%;
+        background-color: #724cf9;
+        margin-bottom: 7px;
+      }
+
+      span:first-child {
+        width: 100%;
+      }
+
+      span:last-child {
+        width: 30%;
+      }
+    }
+
+    .mobileOpenIconActive {
+      span {
+        width: 100%;
+        transform: translate(-1px, -4px) rotate(45deg);
+      }
+
+      span:first-child {
+        transform: translate(0px, 3px) rotate(-45deg);
+      }
+
+      span:last-child {
+        display: none;
+      }
+    }
   }
 }

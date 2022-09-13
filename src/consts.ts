@@ -42,3 +42,4 @@ export const ErrorMessagesFirebase = new Map([
 
 export const MAX_PRODUCT_COUNT_IN_CART = 99;
 export const LOCAL_STORAGE_NAME = "productInCart";
+export const TIMEOUT_RESET_ERROR = 5000;

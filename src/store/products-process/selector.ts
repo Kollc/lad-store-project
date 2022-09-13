@@ -23,3 +23,6 @@ export const getVectorSort = (state: State): VectorSort =>
 
 export const getTypeSort = (state: State): TypeSort | null =>
   state[NameSpace.Products].typeSort;
+
+  export const getErrorProducts = (state: State): string =>
+  state[NameSpace.Products].error;

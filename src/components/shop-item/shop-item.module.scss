@@ -75,3 +75,16 @@
     align-self: center;
   }
 }
+
+@media (max-width: 850px) {
+  .cartItem {
+    max-width: 80%;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .cartItem {
+    max-width: 100%;
+  }
+}

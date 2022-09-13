@@ -17,6 +17,19 @@ function Filter(): JSX.Element {
   const [filterCategories, setFilterCategories] = useState<string[]>([]);
   const [minPrice, setMinPrice] = useState<number | "">("");
   const [maxPrice, setMaxPrice] = useState<number | "">("");
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const screenWidth = window.screen.width;
+
+  useEffect(() => {
+    if (screenWidth <= 700) {
+      setIsMobile(true);
+    }
+  }, [screenWidth]);
+
+  const clickFilterButtonHandle = () => {
+    setFilterOpen((prevState) => !prevState);
+  };
 
   const submitFilterFormHandle = (evt: FormEvent) => {
     evt.preventDefault();
@@ -38,6 +51,7 @@ function Filter(): JSX.Element {
     }
 
     dispatch(setShowProducts(filterProduct));
+    setFilterOpen(false);
   };
 
   const clickResetButtonHandle = () => {
@@ -45,6 +59,7 @@ function Filter(): JSX.Element {
     setMinPrice("");
     setFilterCategories([]);
     dispatch(setShowProducts(originProducts));
+    setFilterOpen(false);
   };
 
   useEffect(() => {
@@ -54,9 +69,32 @@ function Filter(): JSX.Element {
   }, [originProducts]);
 
   return (
-    <div className={style.filter}>
-      <h2>Filter</h2>
-      <form onSubmit={submitFilterFormHandle}>
+    <div
+      className={style.filter}
+      style={{
+        height: isMobile ? (filterOpen ? "500px" : "50px") : "500px",
+      }}
+    >
+      <div className={style.heaaderFilter}>
+        <h2>Filter</h2>
+        <button
+          className={`${style.mobileOpenIcon} ${
+            filterOpen ? style.mobileOpenIconActive : ""
+          }`}
+          onClick={clickFilterButtonHandle}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <form
+        onSubmit={submitFilterFormHandle}
+        style={{
+          display: isMobile ? (filterOpen ? "block" : "none") : "block",
+        }}
+      >
         <div className={style.block}>
           <h3>Category: </h3>
           <FilterCheckboxList

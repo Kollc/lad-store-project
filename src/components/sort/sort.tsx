@@ -18,7 +18,7 @@ function Sort(): JSX.Element {
   return (
     <div className={style.sort}>
       <div className={style.typeSort}>
-        Sorting:
+        <span>Sorting: </span>
         <button
           className={typeSort === TypeSort.Default ? style.activeSort : ""}
           onClick={() => dispatch(setTypeSort(TypeSort.Default))}

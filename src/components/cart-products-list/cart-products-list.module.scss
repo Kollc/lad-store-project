@@ -1,6 +1,6 @@
 .products {
   list-style: none;
-  padding: 0;
+  padding: 0 15px;
   margin: 0;
 
   li {
@@ -37,5 +37,13 @@
   .emptyCartLink:hover {
     color: #fff;
     background-color: #724cf9;
+  }
+}
+
+@media (max-width: 1200px) {
+  .products {
+    li {
+      height: auto;
+    }
   }
 }

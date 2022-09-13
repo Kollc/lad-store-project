@@ -4,12 +4,13 @@ import { AuthorizationStatusList, ProductType } from "./../../types/type";
 import { AxiosInstance } from "axios";
 import { AppDispatch, State } from "./../../types/state";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { APIRoutes } from "../../consts";
+import { APIRoutes, TIMEOUT_RESET_ERROR } from "../../consts";
 import { Auth, onAuthStateChanged } from "firebase/auth";
 import {
   setAuthorizationStatus,
   setUserData,
 } from "../user-process/user-process";
+import { errorHandler } from "../../services/error-handler";
 
 export const fetchProductsAction = createAsyncThunk<
   void,
@@ -24,8 +25,10 @@ export const fetchProductsAction = createAsyncThunk<
     const { data } = await api.get<ProductType[]>(APIRoutes.Products);
     dispatch(productProcess.setProducts(data));
   } catch (error) {
-    console.log("error: ", error);
-    //   dispatch(productProcess.setErrorMessage());
+    dispatch(productProcess.setError(errorHandler(error)));
+    setTimeout(() => {
+      dispatch(productProcess.resetError());
+    }, TIMEOUT_RESET_ERROR);
   }
 });
 
@@ -46,8 +49,10 @@ export const fetchProductCategoriesAction = createAsyncThunk<
       );
       dispatch(productProcess.setProductCategories(data));
     } catch (error) {
-      console.log("error: ", error);
-      //   dispatch(productProcess.setErrorMessage());
+      dispatch(productProcess.setError(errorHandler(error)));
+      setTimeout(() => {
+        dispatch(productProcess.resetError());
+      }, TIMEOUT_RESET_ERROR);
     }
   }
 );

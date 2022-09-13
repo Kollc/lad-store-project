@@ -107,13 +107,14 @@
 @media (max-width: 700px) {
   .header {
     grid-template-columns: 1fr 1fr;
+    background: #f0f0f0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 
     .menu,
     .userMenu {
       display: none;
     }
-  }
-
-  .userMenuMobule {
   }
 }

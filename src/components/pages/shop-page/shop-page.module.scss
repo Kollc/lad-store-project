@@ -18,3 +18,9 @@
   grid-template-columns: 250px 1fr;
   gap: 0 20px;
 }
+
+@media (max-width: 700px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
+}
