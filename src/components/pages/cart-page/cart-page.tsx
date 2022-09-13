@@ -40,7 +40,7 @@ function CartPage(): JSX.Element {
                 onClick={clickOrderHandle}
                 disabled={Boolean(totalPrice === 0)}
               >
-                Оформить заказ
+                Order the products
               </button>
             </div>
           </div>

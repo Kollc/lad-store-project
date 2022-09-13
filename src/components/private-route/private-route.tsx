@@ -17,7 +17,7 @@ function PrivateRoute({ children }: PrivateRouteProps): JSX.Element {
   ) : requireAuthorization === AuthorizationStatusList.Unknown ? (
     <Spinner />
   ) : (
-    <Navigate to={AppRoutes.SignIn} />
+    <Navigate to={AppRoutes.SignUp} />
   );
 }
 

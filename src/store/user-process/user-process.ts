@@ -14,6 +14,9 @@ export const userProcess = createSlice({
   name: NameSpace.User,
   initialState,
   reducers: {
+    resetUserError: (state) => {
+      state.error = "";
+    },
     setUserError: (state, action) => {
       state.error = action.payload;
     },
@@ -26,5 +29,9 @@ export const userProcess = createSlice({
   },
 });
 
-export const { setAuthorizationStatus, setUserData, setUserError } =
-  userProcess.actions;
+export const {
+  setAuthorizationStatus,
+  setUserData,
+  setUserError,
+  resetUserError,
+} = userProcess.actions;

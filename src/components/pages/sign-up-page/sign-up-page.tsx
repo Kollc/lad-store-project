@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/store-hooks";
 import { auth } from "../../../services/firebase/firebase-user-auth";
 import { getUserError } from "../../../store/user-process/selector";
 import {
+  resetUserError,
   setAuthorizationStatus,
   setUserData,
   setUserError,
@@ -41,6 +42,8 @@ function SignUpPage(): JSX.Element {
     } else {
       dispatch(setUserError(ErrorMessagesFirebase.get("passwordNotConfim")));
     }
+
+    dispatch(resetUserError());
   };
 
   return (
@@ -73,7 +76,7 @@ function SignUpPage(): JSX.Element {
           <p className={style.registerLink}>
             Already registered? <Link to="/sign-in">Login</Link>
           </p>
-          <button type="submit">Отправить</button>
+          <button type="submit">Sign up</button>
         </form>
       </section>
     </MainLayout>

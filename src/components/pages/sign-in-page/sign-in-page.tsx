@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../services/firebase/firebase-user-auth";
 import { useNavigate } from "react-router-dom";
 import {
+  resetUserError,
   setAuthorizationStatus,
   setUserData,
   setUserError,
@@ -36,6 +37,8 @@ function SignInPage(): JSX.Element {
         dispatch(setAuthorizationStatus(AuthorizationStatusList.NoAuth));
         dispatch(setUserError(ErrorMessagesFirebase.get(error.code)));
       });
+
+    dispatch(resetUserError());
   };
 
   return (
@@ -58,7 +61,7 @@ function SignInPage(): JSX.Element {
             onChange={(evt) => setPassword(evt.target.value)}
           />
           <span className={style.error}>{error}</span>
-          <button type="submit">Отправить</button>
+          <button type="submit">Sign in</button>
         </form>
       </section>
     </MainLayout>

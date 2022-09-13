@@ -38,6 +38,9 @@ export const ErrorMessagesFirebase = new Map([
   ["passwordNotConfim", "Passwords do not match!"],
   ["auth/invalid-email", "Please enter a valid email!"],
   ["auth/weak-password", "Please enter a better password!"],
+  ["auth/email-already-in-use", "This user is already registered!"],
+  ["auth/internal-error", "Enter correct data!"],
+  ["auth/wrong-password", "Invalid password!"],
 ]);
 
 export const MAX_PRODUCT_COUNT_IN_CART = 99;
